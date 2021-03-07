@@ -1,6 +1,6 @@
 body
 {
-    background-color: #212121;
+    background-color: #222222;
     margin: 12px;
 }
 h1
@@ -16,33 +16,53 @@ h1
 }
 #gridBox
 {   
-    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(41, 41, 41);
+    border: 2px solid rgb(0, 0, 0);
     display: grid;
     grid-template-columns: auto;
     width: 500px;
     height: 500px;
     margin: 0 auto;
 }
-#newDiv
+#button
+{
+    text-align: center; padding-bottom: 10px;
+}
+#gridBox div
 {
     border: 0.1px solid rgb(181, 243, 212, 0.04);
-    float: left;
 }
-#newDiv:hover 
+#clearButton
 {
-    background-color: blue;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px 10px 10px 10px;
+    border: none;
+    color: white;
+    background-color: rgb(21, 161, 75);
+    cursor: pointer;
 }
-#button { text-align: center; padding-bottom: 10px;}
+#clearButton:hover
+{
+    background-color: rgb(12, 97, 44);
+}
+#clearButton:active
+{
+    background-color: rgb(17, 121, 57);
+}
 #gridButton
 {
-    font-family: 'Akaya Telivigala', cursive;
+    font-family: 'Montserrat', sans-serif;
     padding: 10px 10px 10px 10px;
     border: none;
     color: white;
     background-color: rgb(152, 12, 170);
     cursor: pointer;
 }
-#gridButton:focus
+#gridButton:hover
+{
+    background-color: rgb(94, 8, 105);
+}
+#gridButton:focus, #clearButton:focus
 {
     outline: none;
 }
