@@ -5,36 +5,56 @@ function createGrid(chosenSize)
     for (let i = 0; i < chosenSize * chosenSize; i++) 
     {
         const newDiv = document.createElement("div");
-        newDiv.setAttribute("id","newDiv");
+        newDiv.addEventListener("mouseover", (e) => e.target.style.backgroundColor = getRGB());
         document.getElementById("gridBox").appendChild(newDiv);
     }
 }
-function setGridSize(size)
+
+function setGridSize(size = 16)
 {
     resetGrid();
     createGrid(size);
-    gridBox.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    gridBox.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 }
-function resetGrid() {
+setGridSize();
+
+function resetGrid() 
+{
     const element = document.getElementById("gridBox");
-    while (element.firstChild) {
+    while (element.firstChild) 
+    {
         element.removeChild(element.firstChild);
     }
 }
-setGridSize(16);
-//Button functioning:
+
+function getRGB() 
+{
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+    return `rgb(${randomR},${randomG},${randomB})`;
+}
+
+let gridBoxId = document.getElementById("gridBox");
+let gridSquares = gridBoxId.querySelectorAll("div");
+
+//Buttons functioning:
+
+const clearGrid = document.querySelector("#clearButton");
+clearGrid.textContent = "Clear Grid";
+
 
 const createNewGrid = document.querySelector("#gridButton");
 createNewGrid.textContent = "Start New Grid";
 
-createNewGrid.addEventListener("click", function() {
-    let newSize = parseInt(prompt("Set a new grid size (from 1 to 64)"));
+const buttonFunction = createNewGrid.addEventListener("click", () => 
+{
+    let newSize = parseInt(prompt("Set a new grid size (from 1 to 100)"));
     if (isNaN(newSize)) {
         alert("Please type a number!");
     }
-    else if (newSize > 0 && newSize <= 64) {
+    else if (newSize > 0 && newSize <= 100) {
         setGridSize(newSize);
     }
-    else { alert("Please type a number from 1 to 64") }
+    else { alert("Please type a number from 1 to 100") }
 });
-
