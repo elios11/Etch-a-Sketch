@@ -36,18 +36,24 @@ function getRGB()
 }
 
 let gridBoxId = document.getElementById("gridBox");
-let gridSquares = gridBoxId.querySelectorAll("div");
+
 
 //Buttons functioning:
 
 const clearGrid = document.querySelector("#clearButton");
 clearGrid.textContent = "Clear Grid";
 
+function toClearGrid()
+{
+    let gridSquares = gridBoxId.querySelectorAll("div");
+    gridSquares.forEach(item => item.style.backgroundColor = "rgb(41, 41, 41)");
+}
+clearGrid.addEventListener("click", () => toClearGrid());
 
 const createNewGrid = document.querySelector("#gridButton");
 createNewGrid.textContent = "Start New Grid";
 
-const buttonFunction = createNewGrid.addEventListener("click", () => 
+createNewGrid.addEventListener("click", () => 
 {
     let newSize = parseInt(prompt("Set a new grid size (from 1 to 100)"));
     if (isNaN(newSize)) {
